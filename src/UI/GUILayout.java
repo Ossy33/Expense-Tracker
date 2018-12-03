@@ -25,6 +25,8 @@ public class GUILayout {
 	private JTextField searchBar;
 	private JList categories;
 	private JTable fields;
+	private JLabel totalLabel;
+	private JLabel categoryTotalLabel;
 
 	private Handler handler;
 
@@ -48,11 +50,10 @@ public class GUILayout {
 			e.printStackTrace();
 		}
 
-
 		//Frame stuff
 		frame = new JFrame("Expense Tracker");
 		frame.setContentPane(new GUILayout().panel1);
-		frame.setMinimumSize(new Dimension(500,400));
+		frame.setMinimumSize(new Dimension(600,500));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
@@ -70,6 +71,10 @@ public class GUILayout {
 		//Listeners
 		ButtonListener lForButton = new ButtonListener();
 		ListenForListSelection lForListSelection = new ListenForListSelection();
+
+		//Labels with the sum of money
+		totalLabel = new JLabel();
+		categoryTotalLabel = new JLabel();
 
 		//NewFieldButton --JButton
 		newFieldButton = new JButton();
@@ -112,6 +117,7 @@ public class GUILayout {
 		for (String i: handler.getCategoryList().getCategoryNames()) {
 			categoryModel.addElement(i);
 		}
+		updateTotal();
 	}
 
 	/**Updates the fieldModel with the current stored information in the categorylist*/
@@ -126,6 +132,14 @@ public class GUILayout {
 			//TODO add window?
 			System.out.println("No selected category, can't find the data(in the update)");
 		}
+		updateTotal();
+	}
+
+	public void updateTotal(){
+
+		totalLabel.setText(Integer.toString(handler.getCategoryList().getTotalMoney()));
+		categoryTotalLabel.setText(Integer.toString(handler.getCategoryList().getCategory(categorySelected).getCategoryMoney()));
+
 	}
 
 	/**Returns the currently selected index*/

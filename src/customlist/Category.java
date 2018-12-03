@@ -5,13 +5,16 @@ import java.util.ArrayList;
 public class Category {
 
 	private String name;
+	private int totalMoney;
 	private ArrayList<Field> fields;
+
 
 	/**A Category need to have a:
 	 * @param name which is this categories name*/
 	public Category(String name){
 		fields = new ArrayList<Field>();
 		this.name = name;
+		totalMoney = 0;
 
 	}
 
@@ -21,6 +24,7 @@ public class Category {
 	 * @param comment a comment which the user can refer to*/
 	public void addField(String date, int money, String comment){
 		fields.add(new Field(date,money, comment));
+		totalMoney += money;
 	}
 
 	/**Returns the name of the category*/
@@ -33,7 +37,9 @@ public class Category {
 	public void removeField(String date, int money, String comment){
 		for (Field f: fields) {
 			if (f.getDate().equals(date) && f.getMoney() == money && f.getComment().equals(comment)){
+				totalMoney -= f.getMoney();
 				fields.remove(f);
+
 			}
 		}
 	}
@@ -78,5 +84,9 @@ public class Category {
 			fieldData[i] = fields.get(i).getStringData();
 		}
 		return fieldData;
+	}
+
+	public int getCategoryMoney(){
+		return totalMoney;
 	}
 }

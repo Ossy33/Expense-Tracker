@@ -96,4 +96,12 @@ public class CategoryList {
 		}
 		return temp;
 	}
+
+	public int getTotalMoney(){
+		int total = 0;
+		for (Category i : categories){
+			total += i.getCategoryMoney();
+		}
+		return total;
+	}
 }
