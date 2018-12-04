@@ -1,5 +1,6 @@
 package customlist;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CategoryList {
@@ -49,6 +50,11 @@ public class CategoryList {
 
 	/**Returns the names of all the categories in a arraylist of strings*/
 	public ArrayList<String> getCategoryNames(){
+		names.clear();
+		for (Category i : categories){
+			names.add(i.getName());
+		}
+
 		return names;
 	}
 
@@ -103,5 +109,15 @@ public class CategoryList {
 			total += i.getCategoryMoney();
 		}
 		return total;
+	}
+
+	public ArrayList<Category> getCategories(){
+		return categories;
+	}
+
+	public void insertCategory(Category category){
+		categories.add(category);
+		names.add(category.getName());
+		length++;
 	}
 }

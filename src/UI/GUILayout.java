@@ -73,8 +73,9 @@ public class GUILayout {
 		ListenForListSelection lForListSelection = new ListenForListSelection();
 
 		//Labels with the sum of money
-		totalLabel = new JLabel();
-		categoryTotalLabel = new JLabel();
+		totalLabel = new JLabel(Integer.toString(handler.getCategoryList().getTotalMoney()));
+		categoryTotalLabel = new JLabel(Integer.toString(handler.getCategoryList().getCategory(categorySelected).getCategoryMoney()));
+
 
 		//NewFieldButton --JButton
 		newFieldButton = new JButton();
@@ -139,7 +140,11 @@ public class GUILayout {
 
 		totalLabel.setText(Integer.toString(handler.getCategoryList().getTotalMoney()));
 		categoryTotalLabel.setText(Integer.toString(handler.getCategoryList().getCategory(categorySelected).getCategoryMoney()));
+	}
 
+
+	public DefaultListModel getCategoryModel(){
+		return categoryModel;
 	}
 
 	/**Returns the currently selected index*/
@@ -207,13 +212,18 @@ public class GUILayout {
 
 				Contains:
 				JComboBox -- Categories
-				JTable -- with the fields
+					//This is choosing which fields will be displayed
+				JTextArea -- This is the category name which you will be able to edit
+				JTable -- with the fields for the chosen category
 				JButton(ok) -- accept the changes made in the JTable.
 					Changes is transferred to the main window and the window is closed down.
 				JButton(Cancel) --Close down the window with no changes to the main table
 
 
 				 */
+				EditCategory editCat = new EditCategory();
+				editCat.run();
+
 			}
 		}
 	}

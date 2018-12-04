@@ -18,6 +18,10 @@ public class Category {
 
 	}
 
+	public ArrayList<Field> getFields(){
+		return fields;
+	}
+
 	/**Adds a new field to the current category
 	 * @param date the date for the transaction
 	 * @param money the money transferred/received
@@ -32,6 +36,10 @@ public class Category {
 		return name;
 	}
 
+	public void changeName(String name){
+		this.name = name;
+	}
+
 	/**Removes the field in the category which has the
 	 * date, money and comment entered if there is one*/
 	public void removeField(String date, int money, String comment){
@@ -42,6 +50,12 @@ public class Category {
 
 			}
 		}
+	}
+
+	/**Removes the field in the category which the specified index
+	 * @param index the index of the field which shall be removed*/
+	public void removeField(int index){
+		fields.remove(index);
 	}
 
 	/**Returns the field with the entered date, money and comment

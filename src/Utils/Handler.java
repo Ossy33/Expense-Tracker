@@ -13,13 +13,13 @@ public class Handler {
 
 	/**Sets the CategoryList*/
 	public void setCategoryList(CategoryList categoryList) {
-		Handler.categoryList = categoryList;
+		this.categoryList = categoryList;
 	}
 
 	/**Returns the CategoryList if it has been initialized*/
 	public CategoryList getCategoryList(){
 		try {
-			return Handler.categoryList;
+			return this.categoryList;
 		}catch (NullPointerException e){
 			System.out.println("The CategoryList have never been initialized");
 		}
