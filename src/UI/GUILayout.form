@@ -163,7 +163,7 @@
           <forms top="0" left="5" bottom="0" right="0"/>
         </constraints>
         <properties>
-          <text value=""/>
+          <text value="0"/>
         </properties>
       </component>
       <component id="5b51e" class="javax.swing.JLabel" binding="categoryTotalLabel" custom-create="true">
@@ -172,7 +172,7 @@
           <forms top="0" left="5" bottom="0" right="0"/>
         </constraints>
         <properties>
-          <text value=""/>
+          <text value="0"/>
         </properties>
       </component>
       <component id="e79fc" class="javax.swing.JLabel">

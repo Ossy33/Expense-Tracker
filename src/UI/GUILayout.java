@@ -36,9 +36,12 @@ public class GUILayout {
 	private static int categorySelected;
 	private static JFrame frame;
 
+	private String test;
+
+
 	/**Constructor*/
 	public GUILayout(){
-
+		//TODO add tooltips to all necessary components
 	}
 
 	/**Creates the frame and inserts all the components*/
@@ -60,6 +63,7 @@ public class GUILayout {
 
 		ListenForWindow lForWindow = new ListenForWindow();
 		frame.addWindowListener(lForWindow);
+
 	}
 
 	/**Sets up all the needed components for the main window*/
@@ -73,9 +77,11 @@ public class GUILayout {
 		ListenForListSelection lForListSelection = new ListenForListSelection();
 
 		//Labels with the sum of money
-		totalLabel = new JLabel(Integer.toString(handler.getCategoryList().getTotalMoney()));
-		categoryTotalLabel = new JLabel(Integer.toString(handler.getCategoryList().getCategory(categorySelected).getCategoryMoney()));
+		test = "hello";
+		totalLabel = new JLabel(test);
+		categoryTotalLabel = new JLabel();
 
+		totalLabel.setEnabled(true);
 
 		//NewFieldButton --JButton
 		newFieldButton = new JButton();
@@ -109,6 +115,7 @@ public class GUILayout {
 		//So you can't edit them
 		fields.setEnabled(false);
 
+
 	}
 
 	/**Updates the categoryModel to the current names stored in the categorylist.*/
@@ -137,9 +144,10 @@ public class GUILayout {
 	}
 
 	public void updateTotal(){
-
+		totalLabel.requestFocus();
 		totalLabel.setText(Integer.toString(handler.getCategoryList().getTotalMoney()));
 		categoryTotalLabel.setText(Integer.toString(handler.getCategoryList().getCategory(categorySelected).getCategoryMoney()));
+		//test = Integer.toString(handler.getCategoryList().getTotalMoney());
 	}
 
 
@@ -205,21 +213,10 @@ public class GUILayout {
 
 			if (e.getSource() == editButton){
 
-				//TODO -- allow the user to edit fields
+				//TODO -- allow the user to remove fields
 				/*
-				Add a window with information to be able to edit
-				the fields with the selected category
-
-				Contains:
-				JComboBox -- Categories
-					//This is choosing which fields will be displayed
-				JTextArea -- This is the category name which you will be able to edit
-				JTable -- with the fields for the chosen category
-				JButton(ok) -- accept the changes made in the JTable.
-					Changes is transferred to the main window and the window is closed down.
-				JButton(Cancel) --Close down the window with no changes to the main table
-
-
+				Allow the user to remove fields from the EditCategory fields.
+				Maybe with rightclick or with a button
 				 */
 				EditCategory editCat = new EditCategory();
 				editCat.run();

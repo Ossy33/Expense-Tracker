@@ -103,4 +103,9 @@ public class Category {
 	public int getCategoryMoney(){
 		return totalMoney;
 	}
+
+	public void removeAllFields(){
+		fields.clear();
+		totalMoney = 0;
+	}
 }

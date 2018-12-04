@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="FormLayout">
     <rowspec value="center:35px:noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
-    <rowspec value="center:max(d;300px):grow"/>
+    <rowspec value="center:300px:grow"/>
     <rowspec value="top:4dlu:noGrow"/>
     <rowspec value="center:max(d;4px):noGrow"/>
     <colspec value="fill:170px:noGrow"/>
@@ -38,15 +38,6 @@
             <preferred-size width="150" height="-1"/>
           </grid>
           <forms defaultalign-horz="false"/>
-        </constraints>
-        <properties/>
-      </component>
-      <component id="5d40d" class="javax.swing.JTable" binding="fieldList">
-        <constraints>
-          <grid row="2" column="0" row-span="1" col-span="9" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="50"/>
-          </grid>
-          <forms defaultalign-horz="false" defaultalign-vert="false"/>
         </constraints>
         <properties/>
       </component>
@@ -136,19 +127,35 @@
         </constraints>
         <properties>
           <font/>
+          <preferredSize width="0" height="17"/>
         </properties>
       </component>
       <component id="18fc2" class="javax.swing.JButton" binding="btnChangeCategoryName" custom-create="true">
         <constraints>
-          <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false"/>
         </constraints>
         <properties>
           <icon value="icons/baseline_sync_white_24dp.png"/>
+          <preferredSize width="30" height="30"/>
           <text value=""/>
           <toolTipText value="Change Selected Category Name "/>
         </properties>
       </component>
+      <scrollpane id="33f65">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="9" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-horz="false" defaultalign-vert="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="c245d" class="javax.swing.JTable" binding="fieldsTable" custom-create="true">
+            <constraints/>
+            <properties/>
+          </component>
+        </children>
+      </scrollpane>
     </children>
   </grid>
 </form>
