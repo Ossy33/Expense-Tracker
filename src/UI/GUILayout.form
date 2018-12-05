@@ -18,14 +18,16 @@
     <colspec value="left:4dlu:noGrow"/>
     <colspec value="fill:max(d;4px):noGrow"/>
     <colspec value="left:4dlu:noGrow"/>
-    <colspec value="left:50px:noGrow"/>
+    <colspec value="left:35px:noGrow"/>
+    <colspec value="left:4dlu:noGrow"/>
+    <colspec value="fill:60px:noGrow"/>
     <colspec value="left:4dlu:noGrow"/>
     <colspec value="fill:d:grow"/>
     <colspec value="fill:151px:noGrow"/>
     <colspec value="left:2px:noGrow"/>
     <colspec value="fill:2px:noGrow"/>
     <constraints>
-      <xy x="20" y="20" width="509" height="400"/>
+      <xy x="20" y="20" width="615" height="400"/>
     </constraints>
     <properties>
       <preferredSize width="600" height="500"/>
@@ -40,11 +42,12 @@
         <properties>
           <font/>
           <text value="New Field"/>
+          <toolTipText value="Add a field"/>
         </properties>
       </component>
       <component id="def9d" class="javax.swing.JTextField" binding="searchBar">
         <constraints>
-          <grid row="0" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+          <grid row="0" column="13" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
           <forms defaultalign-horz="false"/>
@@ -53,7 +56,7 @@
       </component>
       <hspacer id="3d3f">
         <constraints>
-          <grid row="0" column="13" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="15" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false"/>
         </constraints>
       </hspacer>
@@ -94,7 +97,7 @@
       </component>
       <scrollpane id="65575">
         <constraints>
-          <grid row="4" column="8" row-span="1" col-span="4" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="8" row-span="1" col-span="6" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false" defaultalign-vert="false"/>
         </constraints>
         <properties/>
@@ -117,7 +120,7 @@
       </vspacer>
       <component id="fda6d" class="javax.swing.JLabel">
         <constraints>
-          <grid row="2" column="8" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="8" row-span="1" col-span="6" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false"/>
         </constraints>
         <properties>
@@ -131,11 +134,12 @@
         </constraints>
         <properties>
           <text value="Edit"/>
+          <toolTipText value="Edit fields and categories"/>
         </properties>
       </component>
       <hspacer id="1c1d9">
         <constraints>
-          <grid row="0" column="10" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="12" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false"/>
         </constraints>
       </hspacer>
@@ -146,6 +150,7 @@
         </constraints>
         <properties>
           <text value="Delete"/>
+          <toolTipText value="Delete a category"/>
         </properties>
       </component>
       <component id="3b172" class="javax.swing.JLabel">
@@ -155,6 +160,7 @@
         </constraints>
         <properties>
           <text value="Total:"/>
+          <toolTipText value="Total money in all categories"/>
         </properties>
       </component>
       <component id="3bdd7" class="javax.swing.JLabel" binding="totalLabel" custom-create="true">
@@ -168,7 +174,7 @@
       </component>
       <component id="5b51e" class="javax.swing.JLabel" binding="categoryTotalLabel" custom-create="true">
         <constraints>
-          <grid row="6" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="13" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <forms top="0" left="5" bottom="0" right="0"/>
         </constraints>
         <properties>
@@ -177,11 +183,22 @@
       </component>
       <component id="e79fc" class="javax.swing.JLabel">
         <constraints>
-          <grid row="6" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="6" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
           <forms defaultalign-horz="false"/>
         </constraints>
         <properties>
           <text value="Category total:"/>
+          <toolTipText value="Total for the selected category"/>
+        </properties>
+      </component>
+      <component id="dec91" class="javax.swing.JButton" binding="importButton" custom-create="true" default-binding="true">
+        <constraints>
+          <grid row="0" column="9" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+        <properties>
+          <text value="Import"/>
+          <toolTipText value="Adds new categories with fields from file"/>
         </properties>
       </component>
     </children>

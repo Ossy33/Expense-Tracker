@@ -17,6 +17,7 @@ public class FileReader {
 
 	/**Loads the information into the categorylist from the specified file*/
 	public void load(){
+		int index = categoryList.getCategories().size();
 		int lineCount = 0;
 		String line;
 		String[] lineParts;
@@ -33,7 +34,7 @@ public class FileReader {
 							categoryList.newCategory(i);
 						}
 					}else {
-						categoryList.getCategory(Integer.parseInt(lineParts[0])).addField(lineParts[1], Integer.parseInt(lineParts[2]), lineParts[3]);
+						categoryList.getCategory(Integer.parseInt(lineParts[0]) + index).addField(lineParts[1], Integer.parseInt(lineParts[2]), lineParts[3]);
 					}
 					lineCount++;
 				}

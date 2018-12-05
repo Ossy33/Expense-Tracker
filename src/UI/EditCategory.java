@@ -12,8 +12,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.IOException;
-import java.util.Arrays;
 import java.util.Vector;
 
 public class EditCategory {
@@ -26,11 +24,14 @@ public class EditCategory {
 	private JButton applyButton;
 	private JButton btnChangeCategoryName;
 	private JTable fieldsTable;
+    private JButton deleteButton;
+    private JButton syncButton;
 
-	private static JFrame frame;
+
+    private static JFrame frame;
 
 	private Handler handler;
-	private CategoryList catgList;
+	private static CategoryList catgList;
 
 	private static DefaultComboBoxModel categoryModel;
 	private static DefaultTableModel fieldModel;
@@ -65,6 +66,7 @@ public class EditCategory {
 
 		categoryModel = new DefaultComboBoxModel();
 		fieldModel = new DefaultTableModel();
+
 		fieldModel.addColumn("Date");
 		fieldModel.addColumn("Money");
 		fieldModel.addColumn("Note");
@@ -76,11 +78,14 @@ public class EditCategory {
 		okButton = new JButton();
 		cancelButton = new JButton();
 		applyButton = new JButton();
+        deleteButton = new JButton();
+        syncButton = new JButton();
 
 		okButton.addActionListener(lForChange);
 		cancelButton.addActionListener(lForChange);
 		applyButton.addActionListener(lForChange);
-
+        deleteButton.addActionListener(lForChange);
+        syncButton.addActionListener(lForChange);
 
 		categoryBox = new JComboBox(categoryModel);
 		updateCategoryBox();
@@ -94,7 +99,6 @@ public class EditCategory {
 		updateCategoryArea();
 
 		fieldsTable = new JTable(fieldModel);
-
 		updateFieldTable();
 	}
 
@@ -198,14 +202,32 @@ public class EditCategory {
 				handler.getGUILayout().updateCategoryList();
 				handler.getGUILayout().updateFieldTable();
 			}
+
+			//This is deleting the selected field and updates the fieldTable to the current available fields
+			if (e.getSource() == deleteButton){
+			    try{
+                    catgList.getCategory(categoryBox.getSelectedIndex()).removeField(fieldsTable.getSelectedRow());
+                    updateFieldTable();
+			    }catch (ArrayIndexOutOfBoundsException t){
+                    System.out.println("Arrayindex is out of bounds, can't delete the row.");
+                }
+            }
+
+            if (e.getSource() == syncButton){
+                catgList.clearAll();
+                fillCatgList();
+                //updateCategoryBox();
+                //updateCategoryArea();
+                selectedIndex = 0;
+                updateFieldTable();
+            }
 		}
 	}
 
 	private class ListenForWindow implements WindowListener {
 
 		@Override
-		public void windowOpened(WindowEvent e) {
-		}
+		public void windowOpened(WindowEvent e) {}
 
 		@Override
 		public void windowClosing(WindowEvent e) {
@@ -217,23 +239,16 @@ public class EditCategory {
 		}
 
 		@Override
-		public void windowClosed(WindowEvent e) {
-		}
-
+		public void windowClosed(WindowEvent e) {}
 		@Override
-		public void windowIconified(WindowEvent e) {
-		}
-
+		public void windowIconified(WindowEvent e) {}
 		@Override
-		public void windowDeiconified(WindowEvent e) {
-		}
-
+		public void windowDeiconified(WindowEvent e) {}
+        @Override
+        public void windowActivated(WindowEvent e) {}
 		@Override
-		public void windowActivated(WindowEvent e) {
-		}
-
-		@Override
-		public void windowDeactivated(WindowEvent e) {
-		}
-	}
+		public void windowDeactivated(WindowEvent e) {}
+    }
 }
+
+

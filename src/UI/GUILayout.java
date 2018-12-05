@@ -1,5 +1,6 @@
 package UI;
 
+import Utils.FileReader;
 import Utils.FileWriter;
 import com.bulenkov.darcula.DarculaLaf;
 
@@ -27,6 +28,7 @@ public class GUILayout {
 	private JTable fields;
 	private JLabel totalLabel;
 	private JLabel categoryTotalLabel;
+	private JButton importButton;
 
 	private Handler handler;
 
@@ -41,7 +43,7 @@ public class GUILayout {
 
 	/**Constructor*/
 	public GUILayout(){
-		//TODO add tooltips to all necessary components
+
 	}
 
 	/**Creates the frame and inserts all the components*/
@@ -77,8 +79,7 @@ public class GUILayout {
 		ListenForListSelection lForListSelection = new ListenForListSelection();
 
 		//Labels with the sum of money
-		test = "hello";
-		totalLabel = new JLabel(test);
+		totalLabel = new JLabel();
 		categoryTotalLabel = new JLabel();
 
 		totalLabel.setEnabled(true);
@@ -94,6 +95,10 @@ public class GUILayout {
 		//EditButton --JButton
 		editButton = new JButton();
 		editButton.addActionListener(lForButton);
+
+		//ImportButton --JButton
+		importButton = new JButton();
+		importButton.addActionListener(lForButton);
 
 		categoryModel = new DefaultListModel<String>();
 		for (String i : handler.getCategoryList().getCategoryNames()) {
@@ -137,7 +142,6 @@ public class GUILayout {
 				fieldModel.addRow(i);
 			}
 		}catch (ArrayIndexOutOfBoundsException e){
-			//TODO add window?
 			System.out.println("No selected category, can't find the data(in the update)");
 		}
 		updateTotal();
@@ -213,14 +217,26 @@ public class GUILayout {
 
 			if (e.getSource() == editButton){
 
-				//TODO -- allow the user to remove fields
-				/*
-				Allow the user to remove fields from the EditCategory fields.
-				Maybe with rightclick or with a button
-				 */
+
 				EditCategory editCat = new EditCategory();
 				editCat.run();
 
+			}
+
+			if (e.getSource() == importButton){
+
+				JFileChooser chooser = new JFileChooser();
+				chooser.showOpenDialog(null);
+				try {
+				FileReader rf = new FileReader(chooser.getSelectedFile().getAbsolutePath(),handler.getCategoryList());
+				rf.load();
+				updateCategoryList();
+				updateFieldTable();
+				updateTotal();
+
+				}catch (NullPointerException j){
+					System.out.println("No such path exist. Try select a valid path.");
+				}
 			}
 		}
 	}

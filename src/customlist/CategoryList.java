@@ -1,6 +1,5 @@
 package customlist;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CategoryList {
@@ -16,6 +15,13 @@ public class CategoryList {
 		names = new ArrayList<>();
 		length = 0;
 	}
+
+	public void clearAll(){
+		categories.clear();
+		names.clear();
+		length = 0;
+	}
+
 
 	/**Returns the category dependent of the name
 	 * @param name the name of the category*/

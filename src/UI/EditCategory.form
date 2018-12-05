@@ -5,7 +5,7 @@
     <rowspec value="top:4dlu:noGrow"/>
     <rowspec value="center:300px:grow"/>
     <rowspec value="top:4dlu:noGrow"/>
-    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="center:35px:noGrow"/>
     <colspec value="fill:170px:noGrow"/>
     <colspec value="left:4dlu:noGrow"/>
     <colspec value="fill:160px:noGrow"/>
@@ -16,7 +16,7 @@
     <colspec value="left:4dlu:noGrow"/>
     <colspec value="fill:160px:noGrow"/>
     <constraints>
-      <xy x="20" y="20" width="652" height="401"/>
+      <xy x="20" y="20" width="652" height="459"/>
     </constraints>
     <properties>
       <preferredSize width="600" height="400"/>
@@ -73,11 +73,12 @@
         <children>
           <component id="5b589" class="javax.swing.JButton" binding="cancelButton" custom-create="true" default-binding="true">
             <constraints>
-              <grid row="2" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-              <forms/>
+              <grid row="2" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-vert="false"/>
             </constraints>
             <properties>
               <text value="Cancel"/>
+              <toolTipText value="Discards changes and closes window"/>
             </properties>
           </component>
           <hspacer id="b2e4b">
@@ -88,20 +89,22 @@
           </hspacer>
           <component id="d25f" class="javax.swing.JButton" binding="okButton" custom-create="true" default-binding="true">
             <constraints>
-              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-              <forms/>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-vert="false"/>
             </constraints>
             <properties>
               <text value="Ok"/>
+              <toolTipText value="Applies changes and closes window"/>
             </properties>
           </component>
           <component id="71276" class="javax.swing.JButton" binding="applyButton" custom-create="true" default-binding="true">
             <constraints>
-              <grid row="2" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-              <forms/>
+              <grid row="2" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-vert="false"/>
             </constraints>
             <properties>
               <text value="Apply"/>
+              <toolTipText value="Applies changes"/>
             </properties>
           </component>
           <hspacer id="4f159">
@@ -156,6 +159,42 @@
           </component>
         </children>
       </scrollpane>
+      <grid id="417b2" layout-manager="FormLayout">
+        <rowspec value="center:d:grow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:max(d;4px):noGrow"/>
+        <colspec value="fill:d:grow"/>
+        <colspec value="left:4dlu:noGrow"/>
+        <colspec value="fill:60px:noGrow"/>
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-horz="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="2a94d" class="javax.swing.JButton" binding="deleteButton" custom-create="true" default-binding="true">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <text value="Delete"/>
+              <toolTipText value="Deletes the selected field"/>
+            </properties>
+          </component>
+          <component id="ff189" class="javax.swing.JButton" binding="syncButton" custom-create="true" default-binding="true">
+            <constraints>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="6" fill="0" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <text value="Sync"/>
+              <toolTipText value="Syncs changes from the Expense Tracker"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
     </children>
   </grid>
 </form>
