@@ -9,12 +9,11 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.*;
 
 import Utils.Handler;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.input.Mnemonic;
 
 public class GUILayout {
 	private JPanel panel1;
@@ -88,17 +87,30 @@ public class GUILayout {
 		newFieldButton = new JButton();
 		newFieldButton.addActionListener(lForButton);
 
+		KeyStroke keyStroke1 = KeyStroke.getKeyStroke('A', InputEvent.CTRL_MASK, false);
+		newFieldButton.registerKeyboardAction(lForButton,keyStroke1,JComponent.WHEN_IN_FOCUSED_WINDOW);
+
 		//DeleteButton --JButton
 		deleteButton = new JButton();
 		deleteButton.addActionListener(lForButton);
+
+		KeyStroke keyStroke2 = KeyStroke.getKeyStroke('D', InputEvent.CTRL_MASK, false);
+		deleteButton.registerKeyboardAction(lForButton,keyStroke2,JComponent.WHEN_IN_FOCUSED_WINDOW);
 
 		//EditButton --JButton
 		editButton = new JButton();
 		editButton.addActionListener(lForButton);
 
+		KeyStroke keyStroke3 = KeyStroke.getKeyStroke('E', InputEvent.CTRL_MASK, false);
+		editButton.registerKeyboardAction(lForButton,keyStroke3,JComponent.WHEN_IN_FOCUSED_WINDOW);
+
 		//ImportButton --JButton
 		importButton = new JButton();
 		importButton.addActionListener(lForButton);
+
+		KeyStroke keyStroke4 = KeyStroke.getKeyStroke('I', InputEvent.CTRL_MASK, false);
+		importButton.registerKeyboardAction(lForButton,keyStroke4,JComponent.WHEN_IN_FOCUSED_WINDOW);
+
 
 		categoryModel = new DefaultListModel<String>();
 		for (String i : handler.getCategoryList().getCategoryNames()) {
@@ -225,6 +237,7 @@ public class GUILayout {
 
 			if (e.getSource() == importButton){
 
+				//TODO (if you want more to do) -- import files and check if the category exist.
 				JFileChooser chooser = new JFileChooser();
 				chooser.showOpenDialog(null);
 				try {
